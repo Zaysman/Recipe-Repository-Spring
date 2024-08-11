@@ -5,7 +5,7 @@
 
     <!-- Database connection settings -->
     <session-factory>
-        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/reciperepository</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">123As124!</property>
@@ -27,12 +27,12 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
 
         <!-- Use the XML mapping file (change to annotations or other methods as needed) -->
-        <mapping class="com.isaiah.objects.User"/>
-        <mapping class="com.isaiah.objects.Recipe"/>
-        <mapping class="com.isaiah.objects.Ingredient"/>
-        <mapping class="com.isaiah.objects.Comment"/>
-        <mapping class="com.isaiah.objects.Step"/>
-        <mapping class="com.isaiah.objects.NutritionInfo"/>
+        <mapping class="com.isaiah.main.objects.User"/>
+        <mapping class="com.isaiah.main.objects.Recipe"/>
+        <mapping class="com.isaiah.main.objects.Ingredient"/>
+        <mapping class="com.isaiah.main.objects.Comment"/>
+        <mapping class="com.isaiah.main.objects.Step"/>
+        <mapping class="com.isaiah.main.objects.NutritionInfo"/>
         <!--<mapping resource="Student.hbm.xml"/> -->
         
         <!--This tag is to tell Hibernate where to scan for entity classes -->
