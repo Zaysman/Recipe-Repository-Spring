@@ -2,12 +2,15 @@ package com.isaiah.main;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 //import com.example.reciperepositoryspring.ReciperepositoryspringApplication;
 
 import lombok.extern.java.Log;
 
 @SpringBootApplication
+//@ComponentScan(basePackages = "com.isaiah")
+//@SpringBootApplication(scanBasePackages = "com.isaiah")
 @Log //Log from Lombok dependency.
 public class Main {
 	

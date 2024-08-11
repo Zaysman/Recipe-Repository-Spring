@@ -1,4 +1,4 @@
-package com.isaiah.exceptions;
+package com.isaiah.main.exceptions;
 
 
 import java.sql.SQLException;

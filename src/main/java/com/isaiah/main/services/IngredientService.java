@@ -1,4 +1,4 @@
-package com.isaiah.services;
+package com.isaiah.main.services;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -6,69 +6,42 @@ import org.hibernate.query.Query;
 
 import java.util.LinkedList;
 
-import com.isaiah.objects.Comment;
-import com.isaiah.objects.Recipe;
-import com.isaiah.objects.hibernate.HibernateClient;
+import com.isaiah.main.objects.Ingredient;
+import com.isaiah.main.objects.Recipe;
+import com.isaiah.main.objects.hibernate.HibernateClient;
 
-public class CommentService {
+public class IngredientService {
 	
 	private static HibernateClient HC;
-	
-	public static void createComment(Comment comment) {
+
+	public static void createIngredient(Ingredient i) {
 		Session session = HC.getSessionFactory().openSession();
 		Transaction t = null;
 		
 		try {
 			t = session.beginTransaction();
-			session.save(comment);
+			session.save(i);
 			t.commit();
 			
+			
 		} catch(Exception e) {
 			rollbackTransactionIfNotNull(t);
 			e.printStackTrace();
-			
-			
 		} finally {
 			session.close();
 		}
 		
 	}
 	
-	public static Comment readCommentByID(int commentID) {
-		Session session = HC.getSessionFactory().openSession();
-		Transaction t = null;
-		Comment comment = null;
-		
-		try {
-			t = session.beginTransaction();
-			comment = session.get(Comment.class, commentID);
-			t.commit();
-			
-		} catch(Exception e) {
-			rollbackTransactionIfNotNull(t);
-			e.printStackTrace();
-			
-		} finally {
-			session.close();
-		}
-		
-		return comment;
-	}
-	
-	public static Comment readComment(Comment comment) {
-		return readCommentByID(comment.getCommentID());
-	}
-	
-	public static LinkedList<Comment> readCommentsByRecipeID(int recipeID) {
-		LinkedList<Comment> comments = null;
+	public static Ingredient readIngredientByEntryID(int entryID) {
+		Ingredient ingredient = null;
 		Session session = HC.getSessionFactory().openSession();
 		Transaction t = null;
 		
 		try {
 			t = session.beginTransaction();
-			Query query = session.createQuery("from comments where recipeID=:recipeID");
-			query.setParameter("recipeID", recipeID);
-			comments = (LinkedList<Comment>) query.list();
+			ingredient = session.get(Ingredient.class, entryID);
+			
 			
 		} catch(Exception e) {
 			rollbackTransactionIfNotNull(t);
@@ -78,26 +51,53 @@ public class CommentService {
 			session.close();
 		}
 		
-		return comments;
+		return ingredient;
 	}
 	
-	public static LinkedList<Comment> readCommentsByRecipe(Recipe recipe) {
-		return readCommentsByRecipeID(recipe.getRecipeID());
+	public static Ingredient readIngredient(Ingredient ingredient) {
+		return readIngredientByEntryID(ingredient.getEntryID());
 	}
 	
-	
-	public static void updateCommentByID(int commentID, Comment update) {
+	public static LinkedList<Ingredient> readIngredientsByRecipeID(int recipeId) {
+		LinkedList<Ingredient> ingredients = null;
 		Session session = HC.getSessionFactory().openSession();
 		Transaction t = null;
 		
 		try {
 			t = session.beginTransaction();
-			Comment current = session.get(Comment.class, commentID);
-			current.setAuthorID(update.getAuthorID());
-			current.setCommentContent(update.getCommentContent());
-			current.setCommentID(commentID);
-			current.setCommentRating(update.getCommentRating());
+			Query query = session.createQuery("from Ingredient where recipeID=:recipeID");
+			query.setParameter("recipeId", recipeId);
+			ingredients = (LinkedList<Ingredient>) query.list();
+			
+			
+		} catch(Exception e) {
+			rollbackTransactionIfNotNull(t);
+			e.printStackTrace();
+			
+		} finally {
+			session.close();
+		}
+		
+		
+		return ingredients;
+	}
+	
+	public static LinkedList<Ingredient> readIngredientsByRecipe(Recipe recipe) {
+		return readIngredientsByRecipeID(recipe.getRecipeID());
+	}
+	
+	public static void updateIngredientByEntryID(int entryID, Ingredient update) {
+		Session session = HC.getSessionFactory().openSession();
+		Transaction t = null;
+		
+		try {
+			t = session.beginTransaction();
+			Ingredient current = session.get(Ingredient.class, entryID);
+			current.setEntryID(update.getEntryID());
+			current.setName(update.getName());
+			current.setQuantity(update.getQuantity());
 			current.setRecipeID(update.getRecipeID());
+			current.setUnit(update.getUnit());
 			
 			session.update(current);
 			t.commit();
@@ -106,28 +106,31 @@ public class CommentService {
 		} catch(Exception e) {
 			rollbackTransactionIfNotNull(t);
 			e.printStackTrace();
+			
+			
 		} finally {
 			session.close();
 		}
 		
 	}
 	
-	public static void updateComment(Comment comment) {
-		updateCommentByID(comment.getCommentID(), comment);
+	public static void updateIngredient(Ingredient ingredient) {
+		updateIngredientByEntryID(ingredient.getEntryID(), ingredient);
 	}
 	
 	
 	
-	public static void deleteCommentByID(int commentID) {
+	public static void deleteIngredientByEntryID(int entryID) {
 		Session session = HC.getSessionFactory().openSession();
 		Transaction t = null;
 		
 		try {
 			t = session.beginTransaction();
-			Comment comment = session.get(Comment.class, commentID);
-			session.delete(comment);
+			Ingredient i = session.get(Ingredient.class, entryID);
+			session.delete(i);
 			
 			t.commit();
+			
 			
 		} catch(Exception e) {
 			rollbackTransactionIfNotNull(t);
@@ -138,22 +141,23 @@ public class CommentService {
 		}
 	}
 	
-	public static void deleteComment(Comment comment) {
-		deleteCommentByID(comment.getCommentID());
+	public static void deleteIngredient(Ingredient ingredient) {
+		deleteIngredientByEntryID(ingredient.getEntryID());
 	}
 	
-	public static void deleteCommentsByRecipeID(int recipeID) {
+	public static void deleteIngredientsByRecipeID(int recipeID) {
 		Session session = HC.getSessionFactory().openSession();
 		Transaction t = null;
 		
 		try {
 			t = session.beginTransaction();
-			Query query = session.createQuery("from comments where recipeID=:recipeID");
+			Query query = session.createQuery("delete from ingredients where recipeID=:recipeID");
 			query.setParameter("recipeID", recipeID);
 			
 			query.executeUpdate();
 			t.commit();
 			
+			
 		} catch(Exception e) {
 			rollbackTransactionIfNotNull(t);
 			e.printStackTrace();
@@ -161,12 +165,14 @@ public class CommentService {
 		} finally {
 			session.close();
 		}
-		
 	}
 	
-	public static void deleteCommentsByRecipe(Recipe recipe) {
-		deleteCommentsByRecipeID(recipe.getRecipeID());
+	public static void deleteIngredientsByRecipe(Recipe recipe) {
+		deleteIngredientsByRecipeID(recipe.getRecipeID());
 	}
+	
+	
+	
 	
 	/*
 	 * Utility Method
@@ -176,5 +182,6 @@ public class CommentService {
 			t.rollback();
 		}
 	}
-
+	
+	
 }

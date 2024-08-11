@@ -1,4 +1,4 @@
-package com.isaiah.objects.hibernate;
+package com.isaiah.main.objects.hibernate;
 
 
 import org.hibernate.SessionFactory;

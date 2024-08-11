@@ -1,4 +1,4 @@
-package com.isaiah.enums;
+package com.isaiah.main.enums;
 
 public enum Cuisine {
 	

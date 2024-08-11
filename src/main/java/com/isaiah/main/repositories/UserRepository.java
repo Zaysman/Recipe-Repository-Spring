@@ -1,6 +1,6 @@
-package com.isaiah.repositories;
+package com.isaiah.main.repositories;
 
-import com.isaiah.objects.User;
+import com.isaiah.main.objects.User;
 
 import java.util.List;
 import java.util.Optional;

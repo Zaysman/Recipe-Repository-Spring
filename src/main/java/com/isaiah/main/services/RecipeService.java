@@ -1,10 +1,10 @@
-package com.isaiah.services;
+package com.isaiah.main.services;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.isaiah.objects.Recipe;
-import com.isaiah.objects.hibernate.HibernateClient;
+import com.isaiah.main.objects.Recipe;
+import com.isaiah.main.objects.hibernate.HibernateClient;
 
 public class RecipeService {
 	

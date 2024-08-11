@@ -1,7 +1,8 @@
-package com.isaiah.services;
+package com.isaiah.main.services;
 
-import com.isaiah.objects.User;
-import com.isaiah.repositories.UserRepository;
+import com.isaiah.main.objects.User;
+import com.isaiah.main.repositories.UserRepository;
+
 
 import java.util.Optional;
 
@@ -13,6 +14,12 @@ public class UserService {
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+//	@Autowired
+//	public UserService(UserRepository userRepository) {
+//		this.userRepository = userRepository;
+//	}
+	
 	
 	public void createUser(User user) {
 		Optional<User> existingUser = userRepository.findByUsername(user.getUsername());

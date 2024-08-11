@@ -1,4 +1,4 @@
-package com.isaiah.objects;
+package com.isaiah.main.objects;
 
 import jakarta.persistence.*;
 
