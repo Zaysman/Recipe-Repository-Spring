@@ -16,11 +16,11 @@ public interface IngredientRepository extends JpaRepository<Ingredient, Integer>
 	<S extends Ingredient> S save(S Ingredient);
 	
 	//read operations
-	Optional<Ingredient> findByIngredientID(int ingredientID); 
+	Optional<Ingredient> findByEntryID(int ingredientID); 
 	List<Ingredient> findIngredientsByRecipeID(int recipeID);
 	
 	//delete operations
-	void deleteByIngredientID(int ingredientID);
+	void deleteByEntryID(int ingredientID);
 	void deleteByRecipeID(int recipeID);
 	void delete(Ingredient ingredient);
 	
