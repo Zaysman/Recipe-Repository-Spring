@@ -15,11 +15,6 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
-//	@Autowired
-//	public UserService(UserRepository userRepository) {
-//		this.userRepository = userRepository;
-//	}
-	
 	
 	public void createUser(User user) {
 		Optional<User> existingUser = userRepository.findByUsername(user.getUsername());

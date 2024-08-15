@@ -25,7 +25,7 @@ public class Recipe {
 	private int authorId;
 	
 	@Column(name = "NutritionInfoId")
-	private int nutritionInfoId;
+	private int nutritionInfoID;
 	
 	@Column(name = "rating")
 	private float rating;
@@ -201,12 +201,12 @@ public class Recipe {
 		this.authorId = authorId;
 	}
 
-	public int getNutritionInfoId() {
-		return this.nutritionInfoId;
+	public int getNutritionInfoID() {
+		return this.nutritionInfoID;
 	}
 	
-	public void setNutritionInfoId(int nutritionInfoId) {
-		this.nutritionInfoId = nutritionInfoId;
+	public void setNutritionInfoID(int nutritionInfoId) {
+		this.nutritionInfoID = nutritionInfoId;
 		
 	}
 	

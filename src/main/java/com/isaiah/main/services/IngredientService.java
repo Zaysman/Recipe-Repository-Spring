@@ -24,8 +24,8 @@ public class IngredientService {
 		ingredientRepository.save(ingredient);
 	}
 	
-	public Ingredient readIngredientByIngredientID(int ingredientID) {
-		return ingredientRepository.findByEntryID(ingredientID).orElse(null);
+	public Ingredient readIngredientByEntryID(int entryID) {
+		return ingredientRepository.findByEntryID(entryID).orElse(null);
 	}
 	
 	public List<Ingredient> readIngredientsByRecipeID(int recipeID) {
@@ -36,8 +36,8 @@ public class IngredientService {
 		return ingredientRepository.save(ingredient);
 	}
 	
-	public void deleteIngredientByIngredientID(int ingredientID) {
-		ingredientRepository.deleteByEntryID(ingredientID);
+	public void deleteIngredientByEntryID(int entryID) {
+		ingredientRepository.deleteByEntryID(entryID);
 	}
 	
 	public void deleteIngredientsByRecipeID(int recipeID) {
