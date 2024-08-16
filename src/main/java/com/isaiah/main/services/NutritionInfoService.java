@@ -6,14 +6,16 @@ import org.springframework.stereotype.Service;
 import com.isaiah.main.objects.NutritionInfo;
 import com.isaiah.main.repositories.NutritionInfoRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class NutritionInfoService {
 	
 	@Autowired
 	private NutritionInfoRepository nutritionInfoRepository;
 	
-	public void createNutritionInfo(NutritionInfo nutritionInfo) {
-		nutritionInfoRepository.save(nutritionInfo);
+	public NutritionInfo createNutritionInfo(NutritionInfo nutritionInfo) {
+		return nutritionInfoRepository.save(nutritionInfo);
 	}
 	
 	public NutritionInfo readNutritionInfoByNutritionID(int nutritionID) {
@@ -28,14 +30,17 @@ public class NutritionInfoService {
 		return nutritionInfoRepository.save(nutritionInfo);
 	}
 	
+	@Transactional
 	public void deleteNutritionInfoByNutritionID(int nutritionID) {
 		nutritionInfoRepository.deleteByNutritionID(nutritionID);
 	}
 	
+	@Transactional
 	public void deleteNutritionInfoByRecipeID(int recipeID) {
 		nutritionInfoRepository.deleteByRecipeID(recipeID);
 	}
 	
+	@Transactional
 	public void delete(NutritionInfo nutritionInfo) {
 		nutritionInfoRepository.delete(nutritionInfo);
 	}

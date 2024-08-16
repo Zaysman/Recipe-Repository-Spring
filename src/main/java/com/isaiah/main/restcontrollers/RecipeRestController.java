@@ -41,7 +41,7 @@ public class RecipeRestController {
 		Recipe existingRecipe = recipeService.readRecipeByRecipeID(recipeID);
 		
 		if(existingRecipe != null) {
-			existingRecipe.setAuthorId(recipe.getAuthorId());
+			existingRecipe.setAuthorID(recipe.getAuthorID());
 			existingRecipe.setComments(recipe.getComments());
 			existingRecipe.setCookTime(recipe.getCookTime());
 			existingRecipe.setCuisineType(recipe.getCuisineType());
@@ -56,8 +56,7 @@ public class RecipeRestController {
 			existingRecipe.setServSize(recipe.getServSize());
 			existingRecipe.setTotalTime(recipe.getTotalTime());
 			
-			recipeService.updateRecipe(existingRecipe);
-			return existingRecipe;
+			return recipeService.updateRecipe(existingRecipe);
 		} else {
 			
 			return null;

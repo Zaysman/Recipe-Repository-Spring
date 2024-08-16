@@ -30,7 +30,7 @@ public class UserRestController {
 	//POST create a new user
 	@PostMapping(value = "/createuser", consumes = "application/json", produces = "application/json")
 	public User createUser(@RequestBody User user) {
-		userService.createUser(user);
+		user = userService.createUser(user);
 		return user;
 	}
 	

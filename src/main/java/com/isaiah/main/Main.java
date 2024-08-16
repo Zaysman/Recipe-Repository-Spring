@@ -25,8 +25,8 @@ public class Main {
 		
 		
 		
-		log.info("closing app.");
-		System.exit(0);	
+//		log.info("closing app.");
+//		System.exit(0);	
 	}
 	
 	

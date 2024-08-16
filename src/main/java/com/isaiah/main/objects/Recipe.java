@@ -22,7 +22,7 @@ public class Recipe {
 	private int difflvl;
 	
 	@Column(name = "authorID")
-	private int authorId;
+	private int authorID;
 	
 	@Column(name = "NutritionInfoId")
 	private int nutritionInfoID;
@@ -84,7 +84,7 @@ public class Recipe {
 		this.prepTime = prepTime;
 		this.cookTime = cookTime;
 		this.totalTime = totalTime;
-		this.authorId = authorId;
+		this.authorID = authorId;
 		//this.nutritionInfo = nutritionInfo;
 		this.ingredients = ingredients;
 		this.prepSteps = prepSteps;
@@ -192,13 +192,13 @@ public class Recipe {
 	}
 
 
-	public int getAuthorId() {
-		return authorId;
+	public int getAuthorID() {
+		return authorID;
 	}
 
 
-	public void setAuthorId(int authorId) {
-		this.authorId = authorId;
+	public void setAuthorID(int authorId) {
+		this.authorID = authorId;
 	}
 
 	public int getNutritionInfoID() {
@@ -271,7 +271,7 @@ public class Recipe {
 		return "Recipe [recipeID=" + recipeID + ", servSize=" + servSize + ", difflvl=" + difflvl + ", rating=" + rating
 				+ ", recipeTitle=" + recipeTitle + ", recipeDesc=" + recipeDesc + ", cuisineType=" + cuisineType
 				+ ", prepTime=" + prepTime + ", cookTime=" + cookTime + ", totalTime=" + totalTime + ", authorId="
-				+ authorId + ", nutritionInfo=" + nutritionInfo + ", ingredients=" + ingredients + ", prepSteps="
+				+ authorID + ", nutritionInfo=" + nutritionInfo + ", ingredients=" + ingredients + ", prepSteps="
 				+ prepSteps + ", comments=" + comments + "]";
 	}
 	

@@ -37,10 +37,9 @@ public class CommentRestController {
 	
 	
 	//Post create a new comment
-	@PostMapping(value = "/createComment", consumes = "application/json", produces = "application/json")
+	@PostMapping(value = "/createcomment", consumes = "application/json", produces = "application/json")
 	public Comment createComment(@RequestBody Comment comment) {
-		commentService.createComment(comment);
-		return comment;
+		return commentService.createComment(comment);
 	}
 	
 	//Put update comment
@@ -53,8 +52,8 @@ public class CommentRestController {
 			existingComment.setCommentContent(comment.getCommentContent());
 			existingComment.setCommentRating(comment.getCommentRating());
 			existingComment.setRecipeID(comment.getRecipeID());
-			commentService.updateComment(existingComment);
-			return existingComment;
+			return commentService.updateComment(existingComment);
+			//return existingComment;
 		} else {
 			
 			return null;
@@ -62,7 +61,7 @@ public class CommentRestController {
 	}
 	
 	//Delete a comment by ID
-	@DeleteMapping(value = "/deleteComment/{commentID}")
+	@DeleteMapping(value = "/deletecomment/{commentID}")
 	public void deleteComment(@PathVariable int commentID) {
 		commentService.deleteCommentByCommentID(commentID);
 	}

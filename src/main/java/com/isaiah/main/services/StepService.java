@@ -4,6 +4,8 @@ import com.isaiah.main.objects.Step;
 import com.isaiah.main.objects.Recipe;
 import com.isaiah.main.repositories.StepRepository;
 
+import jakarta.transaction.Transactional;
+
 import java.util.Optional;
 import java.util.List;
 
@@ -19,8 +21,8 @@ public class StepService {
 	private StepRepository stepRepository;
 	
 	
-	public void createStep(Step step) {
-		stepRepository.save(step);
+	public Step createStep(Step step) {
+		return stepRepository.save(step);
 	}
 	
 	public Step readStepByStepID(int StepID) {
@@ -35,14 +37,17 @@ public class StepService {
 		return stepRepository.save(step);
 	}
 	
+	@Transactional
 	public void deleteStepByStepID(int stepID) {
 		stepRepository.deleteByStepID(stepID);
 	}
 	
+	@Transactional
 	public void deleteStepsByRecipeID(int recipeID) {
 		stepRepository.deleteByRecipeID(recipeID);
 	}
 	
+	@Transactional
 	public void delete(Step step) {
 		stepRepository.delete(step);
 	}

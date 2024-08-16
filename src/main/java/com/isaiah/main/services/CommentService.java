@@ -9,14 +9,17 @@ import java.util.List;
 import com.isaiah.main.objects.Comment;
 import com.isaiah.main.repositories.CommentRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class CommentService {
 	
 	@Autowired
 	private CommentRepository commentRepository;
 	
-	public void createComment(Comment comment) {
-		commentRepository.save(comment);
+	public Comment createComment(Comment comment) {
+		Comment savedComment = commentRepository.save(comment);
+		return savedComment;
 	}
 	
 	public Comment readCommentByCommentID(int commentID) {
@@ -31,10 +34,12 @@ public class CommentService {
 		return commentRepository.save(comment);
 	}
 	
+	@Transactional
 	public void deleteCommentByCommentID(int commentID) {
 		commentRepository.deleteByCommentID(commentID);
 	}
 	
+	@Transactional
 	public void deleteCommentsByRecipeID(int recipeID) {
 		commentRepository.deleteByRecipeID(recipeID);
 	}

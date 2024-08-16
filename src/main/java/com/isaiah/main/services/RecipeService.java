@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import com.isaiah.main.objects.Recipe;
 import com.isaiah.main.repositories.RecipeRepository;
 
+import jakarta.transaction.Transactional;
+
 
 
 @Service
@@ -16,8 +18,8 @@ public class RecipeService {
 	private RecipeRepository recipeRepository;
 	
 	
-	public void createRecipe(Recipe recipe) {
-		recipeRepository.save(recipe);
+	public Recipe createRecipe(Recipe recipe) {
+		return recipeRepository.save(recipe);
 	}
 	
 	public Recipe readRecipeByRecipeID(int recipeID) {
@@ -28,10 +30,12 @@ public class RecipeService {
 		return recipeRepository.save(recipe);
 	}
 	
+	@Transactional
 	public void deleteByRecipeID(int recipeID) {
 		recipeRepository.deleteByRecipeID(recipeID);		
 	}
 	
+	@Transactional
 	public void delete(Recipe recipe) {
 		recipeRepository.delete(recipe);
 	}

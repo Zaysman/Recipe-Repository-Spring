@@ -3,6 +3,7 @@ package com.isaiah.main.services;
 import com.isaiah.main.objects.User;
 import com.isaiah.main.repositories.UserRepository;
 
+import jakarta.transaction.Transactional;
 
 import java.util.Optional;
 
@@ -16,13 +17,14 @@ public class UserService {
 	private UserRepository userRepository;
 	
 	
-	public void createUser(User user) {
+	public User createUser(User user) {
 		Optional<User> existingUser = userRepository.findByUsername(user.getUsername());
 		if(existingUser.isPresent()) {
 			throw new RuntimeException("Username already exists");
 		}
 		
-		userRepository.save(user);
+		User savedUser = userRepository.save(user);
+		return savedUser;
 	}
 	
 	public User readUserByUserID(int userID) {
@@ -33,10 +35,11 @@ public class UserService {
 		return userRepository.findByUsername(username).orElse(null);
 	}
 	
-	public void updateUser(User user) {
-		userRepository.save(user);
+	public User updateUser(User user) {
+		return userRepository.save(user);
 	}
 	
+	@Transactional
 	public void deleteUserByUserID(int userID) {
 		userRepository.deleteByUserID(userID);
 	}

@@ -30,7 +30,7 @@ public class IngredientRestController {
 	}
 
 	//Get ingredients by recipeID
-	@GetMapping(value = "/getingredientbyrecipeid/{recipeID}", produces = "application/json")
+	@GetMapping(value = "/getingredientsbyrecipeid/{recipeID}", produces = "application/json")
 	public List<Ingredient> getIngredients(@PathVariable int recipeID) {
 		return ingredientService.readIngredientsByRecipeID(recipeID);
 	}
@@ -39,8 +39,8 @@ public class IngredientRestController {
 	//Post create a new ingredient
 	@PostMapping(value = "/createingredient")
 	public Ingredient createIngredient(@RequestBody Ingredient ingredient) {
-		ingredientService.createIngredient(ingredient);
-		return ingredient;
+		return ingredientService.createIngredient(ingredient);
+		
 	}
 
 	//Put update ingredient
@@ -53,8 +53,8 @@ public class IngredientRestController {
 			existingIngredient.setQuantity(ingredient.getQuantity());
 			existingIngredient.setRecipeID(ingredient.getRecipeID());
 			existingIngredient.setUnit(ingredient.getUnit());
-			ingredientService.updateIngredient(existingIngredient);
-			return existingIngredient;
+			return ingredientService.updateIngredient(existingIngredient);
+			//return existingIngredient;
 		} else {
 			//Handle ingredient not found
 			return null;

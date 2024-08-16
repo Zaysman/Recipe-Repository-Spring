@@ -35,10 +35,9 @@ public class NutritionInfoRestController {
 	}
 	
 	//Post create a new NutritionInfo object
-	@PostMapping(value = "/createnutritioninf", consumes = "application/json", produces = "application/json")
+	@PostMapping(value = "/createnutritioninfo", consumes = "application/json", produces = "application/json")
 	public NutritionInfo createNutritionInfo(@RequestBody NutritionInfo nutritionInfo) {
-		nutritionInfoService.createNutritionInfo(nutritionInfo);
-		return nutritionInfo;
+		return nutritionInfoService.createNutritionInfo(nutritionInfo);
 	}
 	
 	//Put update NutritionInfo

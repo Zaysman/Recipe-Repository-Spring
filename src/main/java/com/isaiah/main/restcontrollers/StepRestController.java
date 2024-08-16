@@ -39,8 +39,7 @@ public class StepRestController {
 	//Post create new recipe
 	@PostMapping(value = "/createstep", consumes = "application/json", produces = "application/json")
 	public Step createStep(@RequestBody Step step) {
-		stepService.createStep(step);
-		return step;
+		return stepService.createStep(step);
 	}
 	
 	//Put update step
@@ -53,8 +52,7 @@ public class StepRestController {
 			existingStep.setStepDesc(step.getStepDesc());
 			existingStep.setStepNote(step.getStepNote());
 			existingStep.setStepNum(step.getStepNum());
-			stepService.updateStep(existingStep);
-			return existingStep;
+			return stepService.updateStep(existingStep);
 		} else {
 			//handle step not found
 			return null;

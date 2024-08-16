@@ -12,6 +12,8 @@ import com.isaiah.main.objects.Ingredient;
 import com.isaiah.main.objects.Recipe;
 import com.isaiah.main.repositories.IngredientRepository;
 
+import jakarta.transaction.Transactional;
+
 
 @Service
 public class IngredientService {
@@ -20,8 +22,8 @@ public class IngredientService {
 	private IngredientRepository ingredientRepository;
 	
 	
-	public void createIngredient(Ingredient ingredient) {
-		ingredientRepository.save(ingredient);
+	public Ingredient createIngredient(Ingredient ingredient) {
+		return ingredientRepository.save(ingredient);
 	}
 	
 	public Ingredient readIngredientByEntryID(int entryID) {
@@ -36,14 +38,17 @@ public class IngredientService {
 		return ingredientRepository.save(ingredient);
 	}
 	
+	@Transactional
 	public void deleteIngredientByEntryID(int entryID) {
 		ingredientRepository.deleteByEntryID(entryID);
 	}
 	
+	@Transactional
 	public void deleteIngredientsByRecipeID(int recipeID) {
 		ingredientRepository.deleteByRecipeID(recipeID);
 	}
 	
+	@Transactional
 	public void delete(Ingredient ingredient) {
 		ingredientRepository.delete(ingredient);
 	}
