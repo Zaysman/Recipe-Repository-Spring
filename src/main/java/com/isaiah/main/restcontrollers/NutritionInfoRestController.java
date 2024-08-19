@@ -5,6 +5,7 @@ import com.isaiah.main.services.NutritionInfoService;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,24 +25,28 @@ public class NutritionInfoRestController {
 	
 	//Get nutritionInfo by nutritionID
 	@GetMapping(value = "/getnutritioninfobynutritionid/{nutritionID}", produces = "application/json")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public NutritionInfo getNutritionInfoByNutritionID(@PathVariable int nutritionID) {
 		return nutritionInfoService.readNutritionInfoByNutritionID(nutritionID);
 	}
 	
 	//Get nutritionInfo by recipeID
 	@GetMapping(value = "/getnutritioninfobyrecipeid/{recipeID}", produces = "application/json")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public NutritionInfo getNutritionInfoByRecipeID(@PathVariable int recipeID) {
 		return nutritionInfoService.readNutritionInfoByRecipeID(recipeID);
 	}
 	
 	//Post create a new NutritionInfo object
 	@PostMapping(value = "/createnutritioninfo", consumes = "application/json", produces = "application/json")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public NutritionInfo createNutritionInfo(@RequestBody NutritionInfo nutritionInfo) {
 		return nutritionInfoService.createNutritionInfo(nutritionInfo);
 	}
 	
 	//Put update NutritionInfo
 	@PutMapping(value = "/updatenutritioninfo/{nutritionID}", consumes = "application/json", produces = "application/json")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public NutritionInfo updateNutritionInfo(@PathVariable int nutritionID, @RequestBody NutritionInfo nutritionInfo) {
 		NutritionInfo existingNutritionInfo = nutritionInfoService.readNutritionInfoByNutritionID(nutritionID);
 		
@@ -71,6 +76,7 @@ public class NutritionInfoRestController {
 	
 	//Delete a NutritionInfo by nutritionID
 	@DeleteMapping(value = "/deletenutritioninfo/{nutritionID}")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public void deleteNutritionInfo(@PathVariable int nutritionID) {
 		nutritionInfoService.deleteNutritionInfoByNutritionID(nutritionID);
 	}

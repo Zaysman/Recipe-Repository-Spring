@@ -4,6 +4,9 @@ import com.isaiah.main.objects.User;
 import com.isaiah.main.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,13 +25,22 @@ public class UserRestController {
 	
 	
 	//GET user by ID
-	@GetMapping(value ="/getuser/{userID}", produces = "application/json")
+	@GetMapping(value = "/getuser/{userID}", produces = "application/json")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public User getUser(@PathVariable int userID) {
 		return userService.readUserByUserID(userID);
 	}
 	
+	//Get user by Username
+	@GetMapping(value = "/getuserbyusername/{username}", produces = "application/json")
+	@CrossOrigin(origins = "http://localhost:3000")
+	public User getUserByUsername(@PathVariable String username) {
+		return userService.readUserByUsername(username);
+	}
+	
 	//POST create a new user
 	@PostMapping(value = "/createuser", consumes = "application/json", produces = "application/json")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public User createUser(@RequestBody User user) {
 		user = userService.createUser(user);
 		return user;
@@ -36,6 +48,7 @@ public class UserRestController {
 	
 	//Put update user
 	@PutMapping(value = "/updateuser/{userID}", consumes = "application/json", produces = "application/json")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public User updateUser(@PathVariable int userID, @RequestBody User user) {
 		User existingUser = userService.readUserByUserID(userID);
 		
@@ -53,6 +66,7 @@ public class UserRestController {
 	
 	//Delete a user by ID
 	@DeleteMapping(value = "/deleteuser/{userID}")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public void deleteUser(@PathVariable int userID) {
 		userService.deleteUserByUserID(userID);	
 	}

@@ -4,6 +4,7 @@ import com.isaiah.main.objects.Recipe;
 import com.isaiah.main.services.RecipeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,12 +25,14 @@ public class RecipeRestController {
 	
 	//Get recipe by ID
 	@GetMapping(value = "/getrecipe/{recipeID}", produces = "application/json")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public Recipe getRecipe(@PathVariable int recipeID) {
 		return recipeService.readRecipeByRecipeID(recipeID);
 	}
 	
 	//Post create recipe
 	@PostMapping(value = "/createrecipe", consumes = "application/json", produces = "application/json")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public Recipe createRecipe(@RequestBody Recipe recipe) {
 		recipeService.createRecipe(recipe);
 		return recipe;
@@ -37,6 +40,7 @@ public class RecipeRestController {
 	
 	//Put update recipe
 	@PutMapping(value = "/updaterecipe/{recipeID}", consumes = "application/json", produces = "application/json")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public Recipe updateRecipe(@PathVariable int recipeID, @RequestBody Recipe recipe) {
 		Recipe existingRecipe = recipeService.readRecipeByRecipeID(recipeID);
 		
@@ -66,6 +70,7 @@ public class RecipeRestController {
 	
 	//Delete a recipe by recipeID
 	@DeleteMapping(value = "/deleterecipe/{recipeID}")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public void deleteRecipe(@PathVariable int recipeID) {
 		recipeService.deleteByRecipeID(recipeID);
 	}

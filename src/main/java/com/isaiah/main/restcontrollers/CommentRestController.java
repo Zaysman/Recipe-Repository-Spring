@@ -6,6 +6,7 @@ import com.isaiah.main.services.CommentService;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,12 +26,14 @@ public class CommentRestController {
 	
 	//Get comment by commentID
 	@GetMapping(value = "/getcommentbycommentid/{commentID}")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public Comment getComment(@PathVariable int commentID) {
 		return commentService.readCommentByCommentID(commentID);
 	}
 	
 	//Get comments by recipeID
 	@GetMapping(value = "getcommentsbyrecipeid/{recipeID}")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public List<Comment> getComments(@PathVariable int recipeID) {
 		return commentService.readCommentsByRecipeID(recipeID);
 	}
@@ -38,12 +41,14 @@ public class CommentRestController {
 	
 	//Post create a new comment
 	@PostMapping(value = "/createcomment", consumes = "application/json", produces = "application/json")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public Comment createComment(@RequestBody Comment comment) {
 		return commentService.createComment(comment);
 	}
 	
 	//Put update comment
 	@PutMapping(value = "/updatecomment/{commentID}", consumes = "application/json", produces = "application/json")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public Comment updateComment(@PathVariable int commentID, @RequestBody Comment comment) {
 		Comment existingComment = commentService.readCommentByCommentID(commentID);
 		
@@ -62,6 +67,7 @@ public class CommentRestController {
 	
 	//Delete a comment by ID
 	@DeleteMapping(value = "/deletecomment/{commentID}")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public void deleteComment(@PathVariable int commentID) {
 		commentService.deleteCommentByCommentID(commentID);
 	}
