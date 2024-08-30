@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("recipe")
@@ -29,6 +31,14 @@ public class RecipeRestController {
 	public Recipe getRecipe(@PathVariable int recipeID) {
 		return recipeService.readRecipeByRecipeID(recipeID);
 	}
+	
+	//Get recipes by AuthorID
+	@GetMapping(value = "/getrecipesbyauthorid/{authorID}")
+	@CrossOrigin(origins = "http://localhost:3000")
+	public List<Recipe> getRecipesByAuthorID(@PathVariable int authorID) {
+		return recipeService.readRecipesByAuthorID(authorID);
+	}
+	
 	
 	//Post create recipe
 	@PostMapping(value = "/createrecipe", consumes = "application/json", produces = "application/json")

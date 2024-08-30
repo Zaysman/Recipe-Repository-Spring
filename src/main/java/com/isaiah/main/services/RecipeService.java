@@ -3,6 +3,8 @@ package com.isaiah.main.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
+
 
 import com.isaiah.main.objects.Recipe;
 import com.isaiah.main.repositories.RecipeRepository;
@@ -24,6 +26,10 @@ public class RecipeService {
 	
 	public Recipe readRecipeByRecipeID(int recipeID) {
 		return recipeRepository.findByRecipeID(recipeID).orElse(null);
+	}
+	
+	public List<Recipe> readRecipesByAuthorID(int authorID) {
+		return recipeRepository.findByAuthorID(authorID);
 	}
 	
 	public Recipe updateRecipe(Recipe recipe) {
