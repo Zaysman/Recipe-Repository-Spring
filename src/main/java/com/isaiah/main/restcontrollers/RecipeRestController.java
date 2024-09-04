@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -39,10 +40,10 @@ public class RecipeRestController {
 		return recipeService.readRecipesByAuthorID(authorID);
 	}
 	
-	//Get recipes by recipeIDs for the purpose of retrieving
-	@GetMapping(value = "/getrecipesbyrecipeids", consumes = "application/json", produces = "application/json")
+	//Get recipes by recipeIDs for the purpose of retrieving favorited recipes
+	@GetMapping(value = "/getrecipesbyrecipeids", produces = "application/json")
 	@CrossOrigin(origins = "http://localhost:3000")
-	public List<Recipe> getRecipesByUserID(@RequestBody List<Integer> recipeIDs) {
+	public List<Recipe> getRecipesByUserID(@RequestParam("favoritedRecipeIDs") List<Integer> recipeIDs) {
 		return recipeService.readRecipesByRecipeIDs(recipeIDs);
 	}
 	
