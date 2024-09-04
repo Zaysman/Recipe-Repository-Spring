@@ -19,7 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("favoritedrecipe")
-public class FavoritedRecipesRestController {
+public class FavoritedRecipeRestController {
 
 	@Autowired
 	private FavoritedRecipeService favoritedRecipeService;
@@ -32,7 +32,7 @@ public class FavoritedRecipesRestController {
 	}
 	
 	//get favoritedRecipes by recipeID
-	@GetMapping(value = "/getfavoritedrecipebyuserid/{userID}", consumes = "application/json", produces = "application/json")
+	@GetMapping(value = "/getfavoritedrecipebyuserid/{userID}", produces = "application/json")
 	@CrossOrigin(origins = "http://localhost:3000")
 	public List<FavoritedRecipe> getFavoritedRecipesByUserID(@PathVariable int userID) {
 		return favoritedRecipeService.readRecipesByUserID(userID);

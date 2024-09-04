@@ -33,6 +33,7 @@
         <mapping class="com.isaiah.main.objects.Comment"/>
         <mapping class="com.isaiah.main.objects.Step"/>
         <mapping class="com.isaiah.main.objects.NutritionInfo"/>
+        <mapping class="com.isaiah.main.objects.FavoritedRecipe"/>
         <!--<mapping resource="Student.hbm.xml"/> -->
         
         <!--This tag is to tell Hibernate where to scan for entity classes -->

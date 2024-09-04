@@ -6,14 +6,16 @@ import com.isaiah.main.repositories.FavoritedRecipeRepository;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
 
-
+@Service
 public class FavoritedRecipeService {
 
 	@Autowired
 	private FavoritedRecipeRepository favoritedRecipeRepository;
+	
 	
 	public FavoritedRecipe createFavoritedRecipe(FavoritedRecipe favoritedRecipe) {
 		return favoritedRecipeRepository.save(favoritedRecipe);
