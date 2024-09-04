@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -17,6 +18,10 @@ public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
 	//read operations
 	Optional<Recipe> findByRecipeID(int recipeID);
 	List<Recipe> findByAuthorID(int authorID);
+	
+	//Custom query to find recipes by a list of recipe IDs
+	@Query("Select r FROM Recipe r where r.recipeID In :recipeIDs")
+	List<Recipe> findByRecipeIDs(List<Integer> recipeIDs);
 	
 	//delete operations
 	void deleteByRecipeID(int recipeID);

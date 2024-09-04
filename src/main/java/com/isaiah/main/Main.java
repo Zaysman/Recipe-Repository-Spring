@@ -1,7 +1,5 @@
 package com.isaiah.main;
 
-
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -22,13 +20,8 @@ public class Main {
 		
 		
 		log.info("Launching Spring Boot Application from Main.java.");
-		
-		
-		
 //		log.info("closing app.");
 //		System.exit(0);	
 	}
 	
-	
-
 }

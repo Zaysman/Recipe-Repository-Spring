@@ -32,6 +32,10 @@ public class RecipeService {
 		return recipeRepository.findByAuthorID(authorID);
 	}
 	
+	public List<Recipe> readRecipesByRecipeIDs(List<Integer> recipeIDs){
+		return recipeRepository.findByRecipeIDs(recipeIDs);
+	}
+	
 	public Recipe updateRecipe(Recipe recipe) {
 		return recipeRepository.save(recipe);
 	}

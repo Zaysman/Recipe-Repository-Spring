@@ -39,6 +39,13 @@ public class RecipeRestController {
 		return recipeService.readRecipesByAuthorID(authorID);
 	}
 	
+	//Get recipes by recipeIDs for the purpose of retrieving
+	@GetMapping(value = "/getrecipesbyrecipeids", consumes = "application/json", produces = "application/json")
+	@CrossOrigin(origins = "http://localhost:3000")
+	public List<Recipe> getRecipesByUserID(@RequestBody List<Integer> recipeIDs) {
+		return recipeService.readRecipesByRecipeIDs(recipeIDs);
+	}
+	
 	
 	//Post create recipe
 	@PostMapping(value = "/createrecipe", consumes = "application/json", produces = "application/json")
